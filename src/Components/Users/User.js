@@ -1,3 +1,5 @@
+import Posts from "../Posts/Posts";
+
 export default function User(props) {
 
     const {item: {id, name, username, email, address: {street, suite, city, geo: {lat, lng}}}} = props;
@@ -12,6 +14,7 @@ export default function User(props) {
                 <h2>{email}</h2>
                 <p>{street} - {suite} - {city}</p>
                 <p>{lat} ---- {lng}</p>
+                <Posts id = {id}/>
             </div>
         </div>
     )
