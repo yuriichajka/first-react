@@ -1,0 +1,12 @@
+.post {
+    border: 2px solid #fff424;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 25px;
+}
+.number {
+    margin-top: 0;
+}
+.text1 {
+    font-size: 25px;
+}
