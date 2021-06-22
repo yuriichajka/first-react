@@ -17,7 +17,7 @@ export default function Posts({id}) {
     return (
         <div>
             {
-                filter.map(value => <Post item = {value}/>)
+                filter.map(value => <Post key={value.id} item = {value}/>)
             }
         </div>
     )
