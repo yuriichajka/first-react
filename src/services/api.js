@@ -6,5 +6,7 @@ let postInstance = axios.create({
 })
 
 const getUsers = () => postInstance('/users')
+const getUser = (id) => postInstance('/users/' + id)
+const getUserDetails = (id) => postInstance('/users/' + id)
 
-export {getUsers}
+export {getUsers, getUserDetails, getUser}
