@@ -20,7 +20,7 @@ export default function Posts({id}) {
     return (
         <div>
             {
-                postOfUser && postOfUser.map(value => <Post item1={value}/>)
+                postOfUser && postOfUser.map(value => <Post key={value.id} item1={value}/>)
             }
         </div>
     )
