@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect, useState} from "react";
+import {getAllUsers} from "./services/users_api";
+import Users from "./components/users/Users";
 
 function App() {
+
+  let [users, setUsers] = useState([]);
+
+  let [user, setUser] = useState({})
+
+  useEffect(() => {
+    getAllUsers().then(value => setUsers([...value]))
+  },[])
+
+  const fromApp = (id) => {
+    // console.log
+    // let choosenUserOnClick = users.find(value => value.id ===id)
+    // console.log(choosenUserOnClick)
+    setUser({...users.find(value => value.id ===id)})
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>{user.username}</h2>
+      <Users usersList={users} fromApp={fromApp}/>
     </div>
   );
 }
