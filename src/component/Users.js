@@ -12,11 +12,14 @@ class users extends Component {
         console.log(users)
 
 
+
+
         return (
             <div>
                 {users.map(u =>
                     <React.Fragment key={u.id}>
                         <h6 >{u.name}</h6>
+                        <p>{u.email}</p>
                     </React.Fragment>
                 )}
             </div>
