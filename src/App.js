@@ -47,6 +47,11 @@ function App() {
             <button onClick={() => {
                 dispatch({type: 'X2'})
             }}>x2</button>
+
+            <button onClick={() => {
+                dispatch({type: 'CUSTOM', payload: '52'})
+            }}>custom</button>
+
         </div>
     )
 }

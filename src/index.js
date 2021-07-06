@@ -13,7 +13,7 @@ const initialState = {
 
 const counterReduser = (state = initialState, action) => {
 
-    // console.log({action, state})
+    console.log({action, state})
 
     switch (action.type) {
         case 'INC': {
@@ -27,6 +27,9 @@ const counterReduser = (state = initialState, action) => {
         }
         case 'X2': {
             return {...state, counterValue: state.counterValue * 2};
+        }
+        case 'CUSTOM': {
+            return {...state, counterValue: state.counterValue + action.payload};
         }
         default: return state;
     }
