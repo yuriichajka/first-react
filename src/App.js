@@ -1,61 +1,74 @@
-import {useSelector, useDispatch} from "react-redux";
-
-const SomeNestedChildComponent = () => {
-
-    const counter = useSelector(({counterValue}) => counterValue);
-    console.log(counter)
-
-
-    return (
-        <div>
-            <h1>{counter}</h1>
-
-        </div>
-    )
-}
+import './App.css';
+import {useDispatch, useSelector} from "react-redux";
+import {useState} from "react";
 
 
 const SomeChildComponent = () => {
+    const counter = useSelector((state) => state.counterValue);
 
-    return (
-       <div>
-           <SomeNestedChildComponent/>
-       </div>
-    )
-}
+    console.log(counter);
 
-function App() {
     const dispatch = useDispatch()
 
+    let [formState, setFormState] = useState({newNum: ''});
+
+    function onSubmit(e) {
+        console.log(e.target.newNum.value);
+        e.preventDefault()
+        console.log(formState)
+    }
+
+    function onChange (e) {
+        setFormState(e.target.value)
+        console.log(e.target.value);
+    }
 
     return (
-        <div>
-            <button onClick={() => {
-                dispatch({type: 'INC'})
-            }}>inc</button>
+        <form onSubmit={onSubmit}>
+            <header className="App-header">
+                <h1>{counter}</h1>
+                <div>
+                    <button onClick={() => {
+                        dispatch({type: 'INC'})
+                    }
+                    }>+
+                    </button>
+                    <button onClick={() => {
+                        dispatch({type: 'DEC'})
+                    }
+                    }>-
+                    </button>
+                    <button onClick={() => {
+                        dispatch({type: 'RESET'})
+                    }
+                    }>0
+                    </button>
+                </div>
+                <div>
+                    <input type="number" name={"newNum"} value={formState.newNum} onChange={onChange}/>
+                    <button onClick={() => {
+                        dispatch({
+                            type: 'USER-CHOICE',
+                            payload: formState
+                        })
+                    }}>Submit</button>
 
-            <SomeChildComponent/>
+                </div>
 
-            <button onClick={() => {
-                dispatch({type: 'DEC'})
-            }}>dec</button>
-
-            <button onClick={() => {
-                dispatch({type: 'RES'})
-            }}>reset</button>
-
-            <button onClick={() => {
-                dispatch({type: 'X2'})
-            }}>x2</button>
-
-            <button onClick={() => {
-                dispatch({type: 'CUSTOM', payload: '52'})
-            }}>custom</button>
-
-        </div>
+            </header>
+        </form>
     )
 }
 
 
+
+function App() {
+    return (
+        <div className="App">
+            <SomeChildComponent/>
+
+        </div>
+    );
+}
 
 export default App;
