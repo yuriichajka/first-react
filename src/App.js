@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import {useSelector, useDispatch} from "react-redux";
+
+const SomeNestedChildComponent = () => {
+
+    const counter = useSelector(({counterValue}) => counterValue);
+    console.log(counter)
+
+
+    return (
+        <div>
+            <h1>{counter}</h1>
+
+        </div>
+    )
+}
+
+
+const SomeChildComponent = () => {
+
+    return (
+       <div>
+           <SomeNestedChildComponent/>
+       </div>
+    )
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const dispatch = useDispatch()
+
+
+    return (
+        <div>
+            <button onClick={() => {
+                dispatch({type: 'INC'})
+            }}>inc</button>
+
+            <SomeChildComponent/>
+
+            <button onClick={() => {
+                dispatch({type: 'DEC'})
+            }}>dec</button>
+
+            <button onClick={() => {
+                dispatch({type: 'RES'})
+            }}>reset</button>
+
+            <button onClick={() => {
+                dispatch({type: 'X2'})
+            }}>x2</button>
+        </div>
+    )
 }
+
+
 
 export default App;
