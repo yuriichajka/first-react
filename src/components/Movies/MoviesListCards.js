@@ -10,8 +10,14 @@ export default function MoviesListCards({item}) {
     return (
         <div>
             <Link to={pathToFilm}>
-                <img src={IMG_API + item.poster_path} alt={item.title}/><br/>
-                {item.original_title}
+                <div className="col s12 m6 l3">
+                    <div className="card">
+                        <div className="card-image waves-effect waves-block waves-light">
+                            <img src={IMG_API + item.poster_path} alt={item.title}/>
+                            <span className="card-title">{item.original_title}</span>
+                        </div>
+                    </div>
+                </div>
             </Link>
         </div>
     )

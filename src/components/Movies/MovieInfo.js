@@ -4,9 +4,9 @@ export default function MovieInfo({item}) {
     console.log(item)
     return (
         <div>
-            <h2>{item.belongs_to_collection.name}</h2>
+            <h2>{item.original_title}</h2>
             <p>{item.overview}</p>
-            <div>{item.vote_averange}</div>
+            <div>{item.vote_average}</div>
         </div>
     )
 }

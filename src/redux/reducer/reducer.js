@@ -2,7 +2,9 @@ const initialState = {
     popularMovies: [],
     totalPages: 0,
     page: 1,
+    genres: []
 }
+
 
 const reducer = (state = initialState, action) => {
     // console.log(action)
@@ -19,6 +21,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 page: action.payload
+            }
+        case 'GET_ALL_GENRES':
+            return {
+                ...state,
+                genres: action.payload
             }
         default:
             return state;
