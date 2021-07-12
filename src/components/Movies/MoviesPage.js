@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import MoviesListCards from "./MoviesListCards";
 import Pagination from "../Pagination/Pagination";
+import GenresList from "../GenresList/GenresList";
 
 export default function MoviesPage() {
 
@@ -23,14 +24,19 @@ export default function MoviesPage() {
         fetch(`http://api.themoviedb.org/3/discover/movie?api_key=f4716334585ea150d3157a6572afbb01&page=${page}`)
             .then(response => response.json())
             .then(value => dispatch({type: 'GET_ALL_MOVIES', payload: value}))
-    }, [page])
-
+    }, [])
 
     console.log(popularMovies)
 
     return (
         <div className="container">
             <div className="row">
+                <div className="">
+                    {
+                        genres.map(value => <GenresList key={value.id} item={value}/>)
+                    }
+                </div>
+
                 <div className="col s12">
                     {
                         popularMovies.map(value => <MoviesListCards key={value.id} item={value}/>)
