@@ -22,9 +22,6 @@ export default function MoviesList() {
             {
                 movies.map(value => <MoviesListCards key={value.id} item={value}/>)
             }
-            <Switch>
-                <Route path="/movie/:id" component = {MoviesListCard}/>
-            </Switch>
         </div>
     )
 }

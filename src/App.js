@@ -11,7 +11,9 @@ export default function App() {
       <Router>
           <div>
               <MoviesList/>
-
+              <Switch>
+                  <Route path="/movie/:id" component = {MoviesListCard}/>
+              </Switch>
           </div>
       </Router>
   )
