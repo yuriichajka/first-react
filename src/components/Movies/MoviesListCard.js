@@ -30,6 +30,7 @@ export default function MoviesListCard() {
             <h3>{card.title}</h3><br/>
             {card.overview}<br/>
             {card.runtime}<br/>
+
         </div>
     )
 }

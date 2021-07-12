@@ -1,7 +1,5 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Link, Route} from "react-router-dom";
-import MovieInfo from "./MovieInfo";
-import MoviesListCard from "./MoviesListCard";
 
 
 const IMG_API = "https://image.tmdb.org/t/p/w1280";
