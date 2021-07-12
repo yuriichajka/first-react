@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import MoviesListCards from "./MoviesListCards";
+import {Route, Switch} from "react-router-dom";
+import MoviesListCard from "./MoviesListCard";
 
 export default function MoviesList() {
 
@@ -20,6 +22,9 @@ export default function MoviesList() {
             {
                 movies.map(value => <MoviesListCards key={value.id} item={value}/>)
             }
+            <Switch>
+                <Route path={'/movie/:id'} render={() => <MoviesListCard/>}/>
+            </Switch>
         </div>
     )
 }

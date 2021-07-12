@@ -11,9 +11,7 @@ export default function App() {
       <Router>
           <div>
               <MoviesList/>
-              <Switch>
-                  <Route path={'/movieslistcard/:id'} render={() => <MoviesListCard/>}/>
-              </Switch>
+
           </div>
       </Router>
   )

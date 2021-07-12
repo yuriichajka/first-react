@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {useRouteMatch} from "react-router-dom";
+import {Route, Switch, useRouteMatch} from "react-router-dom";
+import MovieInfo from "./MovieInfo";
 
 export default function MoviesListCard() {
-    let match = useRouteMatch('/movieslistcard/:id')
+
+    let match = useRouteMatch('/movie/:id')
     // console.log(match.params.id)
     let changedId = match.params.id;
     console.log(changedId)
@@ -15,16 +17,19 @@ export default function MoviesListCard() {
             .then(value => {
                 setCard(value)
                 console.log(value)
-                console.log(changedId, 'dada')
+                // console.log(changedId, 'dada')
             })
-    }, [])
-    console.log(card)
+    }, [changedId])
+
+    // console.log(card)
+
+
 
     return (
         <div>
-            {/*{*/}
-            {/*    card.map(() => <div><h1>hello</h1></div>)*/}
-            {/*}*/}
+            <h3>{card.title}</h3><br/>
+            {card.overview}<br/>
+            {card.runtime}<br/>
         </div>
     )
 }
