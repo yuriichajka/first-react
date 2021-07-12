@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
-import MoviesList from "./components/Movies/MoviesList";
 import {BrowserRouter as Router, Switch, Link, Route} from "react-router-dom";
-import MoviesListCard from "./components/Movies/MoviesListCard";
+import FilmPage from "./components/Movies/FilmPage";
+import MoviesPage from "./components/Movies/MoviesPage";
+import Header from "./components/Header/Header";
 
 
 
@@ -10,9 +11,10 @@ export default function App() {
   return (
       <Router>
           <div>
-              <MoviesList/>
+              <Header/>
               <Switch>
-                  <Route path="/movie/:id" component = {MoviesListCard}/>
+                  <Route exact path={"/movies"} component={MoviesPage}/>
+                  <Route path="/movie/:id" component = {FilmPage}/>
               </Switch>
           </div>
       </Router>

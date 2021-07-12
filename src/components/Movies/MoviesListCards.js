@@ -1,16 +1,15 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Link, Route} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
-const IMG_API = "https://image.tmdb.org/t/p/w1280";
+const IMG_API = "https://image.tmdb.org/t/p/w300";
 
 export default function MoviesListCards({item}) {
-    // console.log(item.id)
+    const pathToFilm = `/movie/${item.id}`
+
     return (
         <div>
-            <Link to={{
-                pathname: '/movie/' + item.id,
-                propsItem: item.id}}>
+            <Link to={pathToFilm}>
                 <img src={IMG_API + item.poster_path} alt={item.title}/><br/>
                 {item.original_title}
             </Link>

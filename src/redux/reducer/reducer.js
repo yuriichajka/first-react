@@ -1,13 +1,25 @@
 const initialState = {
-    movies: [],
+    popularMovies: [],
+    totalPages: 0,
+    page: 1,
 }
 
 const reducer = (state = initialState, action) => {
     // console.log(action)
     // console.log(state)
     switch (action.type) {
-        case 'SET_MOVIES':
-            return {...state, movies: [...action.payload.results]}
+        case 'GET_ALL_MOVIES':
+            return {
+                ...state,
+                popularMovies: [...action.payload.results],
+                totalPages: action.payload.total_pages,
+                page: action.payload.page,
+            }
+        case 'CHANGE_PAGINATION':
+            return {
+                ...state,
+                page: action.payload
+            }
         default:
             return state;
     }
