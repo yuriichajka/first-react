@@ -32,7 +32,7 @@ export default function MoviesPage() {
             <div className="row">
                 <GenresList genres={genres} />
                 <div className="col s12">
-                    <MoviesListCards movies={movies} />
+                    <MoviesListCards movies={movies} key={movies.id}/>
                 </div>
             </div>
             <Pagination
