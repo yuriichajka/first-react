@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Switch, Link, Route} from "react-router-dom";
 import FilmPage from "./components/Movies/FilmPage";
 import MoviesPage from "./components/Movies/MoviesPage";
 import Header from "./components/Header/Header";
-import Pagination from "./components/Pagination/Pagination";
 
 
 

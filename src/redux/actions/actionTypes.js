@@ -1,0 +1,4 @@
+export const GET_ALL_GENRES = 'GET_ALL_GENRES'
+export const GET_ALL_MOVIES = 'GET_ALL_MOVIES'
+export const CHANGE_PAGINATION = 'CHANGE_PAGINATION'
+export const GET_FILM_DATA = 'GET_FILM_DATA'

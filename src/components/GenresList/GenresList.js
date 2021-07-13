@@ -1,15 +1,20 @@
 import React from 'react';
 
-export default function GenresList({item}) {
+export default function GenresList({ genres }) {
     return (
-        // <div className="row mt-5">
-        //     <div className="col">
-                <ul className="list-inline">
-                    <button type="button" className="btn btn-outline-info">
-                        {item.name}
+        <ul className="list-inline" style={{ margin: '20px 0 20px 0'}}>
+            {
+                genres?.map(genre => (
+                    <button
+                        key={genre.id}
+                        type="button"
+                        className="btn btn-outline-info"
+                        style={{ margin: '10px' }}
+                    >
+                        {genre.name}
                     </button>
-                </ul>
-        //     </div>
-        // </div>
+                ))
+            }
+        </ul>
     )
 }

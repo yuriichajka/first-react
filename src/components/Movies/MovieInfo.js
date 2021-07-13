@@ -1,12 +1,12 @@
 import React from 'react';
+import Rating from "@material-ui/lab/Rating";
 
-export default function MovieInfo({item}) {
-    console.log(item)
+export default function MovieInfo({ filmData }) {
     return (
         <div>
-            <h2>{item.original_title}</h2>
-            <p>{item.overview}</p>
-            <div>{item.vote_average}</div>
+            <h2>{filmData.original_title}</h2>
+            <p>{filmData.overview}</p>
+            <Rating value={filmData.vote_average || 0} readOnly max={10} />
         </div>
     )
 }

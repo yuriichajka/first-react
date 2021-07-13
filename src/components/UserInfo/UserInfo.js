@@ -1,9 +1,12 @@
 import React from 'react';
+import userLogo from './Layer2.png'
 
 export default function UserInfo() {
     return (
         <div className='d-flex'>
-            <img src="../Header/Layer%202.png" alt="user"/>
+            <div style={ {height: '20px', marginRight: '10px'}}>
+                <img src={userLogo} alt="user"/>
+            </div>
             <div>Welcome John</div>
         </div>
     )

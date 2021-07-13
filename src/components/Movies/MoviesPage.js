@@ -1,50 +1,45 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import React, { useEffect } from 'react';
+import Pagination from '@material-ui/lab/Pagination';
+import { useDispatch, useSelector } from "react-redux";
+import { changePagination, getAllGenres, getAllMovies } from "../../redux/actions/actionsCreators";
+
 import MoviesListCards from "./MoviesListCards";
-import Pagination from "../Pagination/Pagination";
 import GenresList from "../GenresList/GenresList";
 
 export default function MoviesPage() {
+    const { genres, movies, page, totalNumberOfPages } = useSelector(state => state)
+    const dispatch = useDispatch()
 
-    const { genres } = useSelector(state => state)
-    const dispatch1 = useDispatch()
+    // Get Genres
     useEffect(() => {
         fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=f4716334585ea150d3157a6572afbb01')
             .then(response => response.json())
-            .then(value => dispatch1({type: 'GET_ALL_GENRES', payload: value.genres}))
+            .then(value => dispatch(getAllGenres(value.genres)))
     },[])
-    console.log(genres)
 
-    const { popularMovies, page } = useSelector(state => state);
-    // console.log(movies)
-    const dispatch = useDispatch();
-
-
+    // Get Movies by page
     useEffect(() => {
         fetch(`http://api.themoviedb.org/3/discover/movie?api_key=f4716334585ea150d3157a6572afbb01&page=${page}`)
             .then(response => response.json())
-            .then(value => dispatch({type: 'GET_ALL_MOVIES', payload: value}))
-    }, [])
+            .then(value => dispatch(getAllMovies(value)))
+    }, [page])
 
-    console.log(popularMovies)
+    const handlePaginationChange = (event, value) => dispatch(changePagination(value))
+
 
     return (
         <div className="container">
             <div className="row">
-                <div className="">
-                    {
-                        genres.map(value => <GenresList key={value.id} item={value}/>)
-                    }
-                </div>
-
+                <GenresList genres={genres} />
                 <div className="col s12">
-                    {
-                        popularMovies.map(value => <MoviesListCards key={value.id} item={value}/>)
-                    }
+                    <MoviesListCards movies={movies} />
                 </div>
-                <Pagination/>
             </div>
-
+            <Pagination
+                count={totalNumberOfPages}
+                onChange={handlePaginationChange}
+                color="primary"
+            />
         </div>
     )
 }
