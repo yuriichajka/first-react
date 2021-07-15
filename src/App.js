@@ -15,7 +15,7 @@ export default function App() {
               <Header/>
               <DarkMode/>
               <Switch>
-                  <Route exact path={"/movies"} component={MoviesPage}/>
+                  <Route exact path={"/"} component={MoviesPage}/>
                   <Route path="/movie/:id" component = {FilmPage}/>
               </Switch>
           </div>

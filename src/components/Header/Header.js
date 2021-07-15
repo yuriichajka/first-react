@@ -8,7 +8,7 @@ export default function Header() {
         <div>
             <nav >
                 <div className="container d-flex" style={{justifyContent: "space-between"}}>
-                    <a href="/movies">
+                    <a href="/">
                         <img src={logo} alt="logo"/>
                     </a>
                     <UserInfo/>
