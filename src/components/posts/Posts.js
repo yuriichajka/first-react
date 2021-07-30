@@ -10,7 +10,7 @@ export default function Posts() {
             .then(value => {
                 setPosts([...value])
             })
-    })
+    }, [])
 
     return (
         <div>
